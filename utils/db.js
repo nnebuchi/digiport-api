@@ -4,7 +4,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database:'mydb'
+    database:'digiport'
    
 });
 
@@ -14,6 +14,7 @@ db.connect((err) => {
         return;
     }
     console.log('Connected to the database');
+    return db;
 });
 
 module.exports = db;
