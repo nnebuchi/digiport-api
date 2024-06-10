@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')();
 const AuthService = require('../services/AuthService');
 
-const authService = new AuthService()
+const authService = new AuthService();
 
 class AuthController {
     async registerUser(req, res) {
@@ -49,6 +49,16 @@ class AuthController {
             return res.status(400).json(validation)
             // return res.status(400).json(validation)
         }
+
+    }
+    async forgotPassword(req, res) {
+
+        const requestBody = req.body
+         // Extracting the email and password from the request body
+        const email = requestBody.email;
+        return authService.forgotPassword(email, res)
+
+       
 
     }
 }
