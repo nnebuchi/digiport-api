@@ -206,6 +206,10 @@ class AuthService{
         return jwt.sign(payload, secretKey, options)
 
     }
+
+    async logoutUser(res){
+        
+    }
     
 
     async forgotPassword(email, res){

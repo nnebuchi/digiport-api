@@ -1,6 +1,5 @@
 const prompt = require('prompt-sync')();
 const AuthService = require('../services/AuthService');
-
 const authService = new AuthService();
 
 class AuthController {
@@ -37,7 +36,6 @@ class AuthController {
         const password = requestBody.password;
         const validation = await authService.validateUserLogin(email, password)
         if(validation){
-
              if(validation ==='success'){
                 return authService.loginUser(email, password, res)
                 // return res.status(200).end('yes')
@@ -56,10 +54,13 @@ class AuthController {
         const requestBody = req.body
          // Extracting the email and password from the request body
         const email = requestBody.email;
+        
         return authService.forgotPassword(email, res)
+    }
 
-       
-
+    async logoutUser(req, res){
+        const requestBody = req.body
+        return await authService.logoutUser(res)
     }
 }
 
